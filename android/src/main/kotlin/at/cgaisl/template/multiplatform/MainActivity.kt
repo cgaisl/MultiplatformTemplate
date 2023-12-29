@@ -1,6 +1,6 @@
 package at.cgaisl.template.multiplatform
 
-import App
+import ui.App
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,5 +19,5 @@ class MainActivity : ComponentActivity() {
 }
 
 val koinModule = module {
-    single { RickAndMortyRepository() }
+    single { data.RickAndMortyRepository() }
 }

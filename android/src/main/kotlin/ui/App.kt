@@ -1,3 +1,5 @@
+package ui
+
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.padding
@@ -15,9 +17,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import at.cgaisl.template.multiplatform.R
-import ui.screens.dice.DiceScreen
-import ui.screens.rnmdetail.RnMDetailScreen
-import ui.screens.rnmlist.RnMListScreen
+import ui.screens.DiceScreen
+import ui.screens.RnMDetailScreen
+import ui.screens.RnMListScreen
 
 @Composable
 fun App() {

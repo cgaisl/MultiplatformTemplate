@@ -4,9 +4,9 @@ import app.cash.turbine.test
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
-import ui.screens.dice.DiceScreenEffect
-import ui.screens.dice.DiceScreenEvent
-import ui.screens.dice.diceScreenPresenter
+import presenters.DiceScreenEffect
+import presenters.DiceScreenEvent
+import presenters.diceScreenPresenter
 import kotlin.test.assertEquals
 
 class DiceScreenPresenterTest {
@@ -14,15 +14,15 @@ class DiceScreenPresenterTest {
     @Test
     fun `when RollDicePressed event is sent, DiceRolled effect is emitted`() = runTest {
         moleculeFlow(RecompositionMode.Immediate) {
-            diceScreenPresenter()
+            presenters.diceScreenPresenter()
         }.test {
             val (state, effects, eventSink) = awaitItem()
             assertEquals(1, state.currentDice)
             effects.onEach {
                 println(it)
             }.test {
-                eventSink(DiceScreenEvent.RollDicePressed)
-                assertEquals(DiceScreenEffect.DiceRolled, awaitItem())
+                eventSink(presenters.DiceScreenEvent.RollDicePressed)
+                assertEquals(presenters.DiceScreenEffect.DiceRolled, awaitItem())
             }
 
             assert(awaitItem().state.currentDice in 1..6)

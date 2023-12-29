@@ -1,4 +1,4 @@
-package ui.screens.dice
+package ui.screens
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
@@ -15,19 +15,19 @@ import androidx.compose.ui.unit.dp
 import at.cgaisl.template.multiplatform.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import ui.getRendering
+import ui.getRenderingAndroid
 import vibratePhone
 
 @Composable
 fun DiceScreen() {
-    val (state, effects, eventSink) = getRendering { diceScreenPresenter() }
+    val (state, effects, eventSink) = getRenderingAndroid { presenters.diceScreenPresenter() }
 
     val vibrateFunction = vibratePhone()
 
     LaunchedEffect(Unit) {
         effects.collect { effect ->
             when (effect) {
-                is DiceScreenEffect.DiceRolled -> {
+                is presenters.DiceScreenEffect.DiceRolled -> {
                     vibrateFunction()
                 }
             }
@@ -42,8 +42,8 @@ fun DiceScreen() {
 
 @Composable
 fun DiceScreeContent(
-    state: DiceScreenState,
-    eventSink: (DiceScreenEvent) -> Unit
+    state: presenters.DiceScreenState,
+    eventSink: (presenters.DiceScreenEvent) -> Unit
 ) {
     val coroutineScope = rememberCoroutineScope()
     var targetRotation by remember { mutableFloatStateOf(0f) }
@@ -84,7 +84,7 @@ fun DiceScreeContent(
 
         ElevatedButton(
             onClick = {
-                eventSink(DiceScreenEvent.RollDicePressed)
+                eventSink(presenters.DiceScreenEvent.RollDicePressed)
                 coroutineScope.launch { rollDiceAnimation() }
             },
         ) {
@@ -97,7 +97,7 @@ fun DiceScreeContent(
 @Composable
 fun DiceScreenContentPreview() {
     DiceScreeContent(
-        state = DiceScreenState(currentDice = 1),
+        state = presenters.DiceScreenState(currentDice = 1),
         eventSink = {},
     )
 }

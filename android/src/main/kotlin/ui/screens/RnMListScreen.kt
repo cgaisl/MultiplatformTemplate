@@ -1,23 +1,23 @@
-package ui.screens.rnmlist
+package ui.screens
 
-import LocalNavController
-import Screen
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import ui.LocalNavController
+import ui.Screen
 import ui.components.RnMListItem
-import ui.getRendering
+import ui.getRenderingAndroid
 
 @Composable
 fun RnMListScreen() {
     val navController = LocalNavController.current
-    val (state, effects, eventSink) = getRendering { rnMListScreenPresenter() }
+    val (state, effects, eventSink) = getRenderingAndroid { presenters.rnMListScreenPresenter() }
 
     LaunchedEffect(Unit) {
         effects.collect {
             when (it) {
-                is RnmListScreenEffect.NavigateToDetail -> navController.navigate(Screen.RnMDetail.route(it.characterId))
+                is presenters.RnmListScreenEffect.NavigateToDetail -> navController.navigate(Screen.RnMDetail.route(it.characterId))
             }
         }
     }
@@ -30,14 +30,14 @@ fun RnMListScreen() {
 
 @Composable
 fun RnMListScreenContent(
-    state: RnMListScreenState,
-    eventSink: (RnMListScreenEvent) -> Unit
+    state: presenters.RnMListScreenState,
+    eventSink: (presenters.RnMListScreenEvent) -> Unit
 ) {
     LazyColumn {
         items(state.characters) { character ->
             RnMListItem(
                 character = character,
-                onClick = { eventSink(RnMListScreenEvent.CharacterClicked(character)) }
+                onClick = { eventSink(presenters.RnMListScreenEvent.CharacterClicked(character)) }
             )
         }
     }

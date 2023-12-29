@@ -14,7 +14,7 @@ import coil.compose.AsyncImage
 import data.RnMCharacter
 
 @Composable
-fun RnMListItem(character: RnMCharacter, onClick: () -> Unit) {
+fun RnMListItem(character: data.RnMCharacter, onClick: () -> Unit) {
     Row(
         verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
         modifier = Modifier
@@ -37,7 +37,7 @@ fun RnMListItem(character: RnMCharacter, onClick: () -> Unit) {
 @Composable
 fun RnMListItemPreview() {
     RnMListItem(
-        RnMCharacter(
+        data.RnMCharacter(
             id = "1",
             name = "Rick Sanchez",
             gender = "gender",

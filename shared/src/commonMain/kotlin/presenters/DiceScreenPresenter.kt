@@ -1,8 +1,8 @@
-package ui.screens.dice
+package presenters
 
+import Rendering
 import androidx.compose.runtime.*
 import kotlinx.coroutines.flow.MutableSharedFlow
-import ui.Rendering
 
 data class DiceScreenState(
     val currentDice: Int,

@@ -9,9 +9,9 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
-import ui.screens.rnmlist.RnMListScreenEvent.CharacterClicked
-import ui.screens.rnmlist.RnmListScreenEffect.NavigateToDetail
-import ui.screens.rnmlist.rnMListScreenPresenter
+import presenters.RnMListScreenEvent.CharacterClicked
+import presenters.RnmListScreenEffect.NavigateToDetail
+import presenters.rnMListScreenPresenter
 import kotlin.test.BeforeTest
 import kotlin.test.assertEquals
 
@@ -19,11 +19,11 @@ class RnMListScreenPresenterTest {
 
     @BeforeTest
     fun setup() {
-        val mockRepo = mockk<RickAndMortyRepository> {
+        val mockRepo = mockk<data.RickAndMortyRepository> {
             coEvery { loadCharacters() } just runs
             every { characters } returns MutableStateFlow(
                 listOf(
-                    RnMCharacter(
+                    data.RnMCharacter(
                         "1",
                         "Rick Sanchez",
                         "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
@@ -41,7 +41,7 @@ class RnMListScreenPresenterTest {
     @Test
     fun `characters are loaded and when character clicked, event is emitted`() = runTest {
         moleculeFlow(RecompositionMode.Immediate) {
-            rnMListScreenPresenter()
+            presenters.rnMListScreenPresenter()
         }.test {
             val (state, effects, eventSink) = awaitItem()
             assertEquals(1, state.characters.size)

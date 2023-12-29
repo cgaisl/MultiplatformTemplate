@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.molecule)
+    alias(libs.plugins.apolloPlugin)
 }
 
 kotlin {
@@ -11,6 +13,8 @@ kotlin {
             }
         }
     }
+
+    jvm()
 
     listOf(
         iosX64(),
@@ -25,7 +29,17 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
+            implementation(libs.koin.compose)
+            implementation(libs.coroutines)
+            implementation(libs.apollo.runtime)
             // put your Multiplatform dependencies here
+        }
+        jvmTest.dependencies {
+            implementation(libs.kotlin.test)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.turbine)
+            implementation(libs.koin.test)
+            implementation(libs.mockk)
         }
     }
 }
@@ -35,5 +49,11 @@ android {
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
+    }
+}
+
+apollo {
+    service("RickAndMorty") {
+        packageName.set(libs.versions.android.packageName.get())
     }
 }
