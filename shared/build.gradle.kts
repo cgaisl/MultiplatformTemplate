@@ -3,18 +3,13 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.molecule)
     alias(libs.plugins.apolloPlugin)
+    alias(libs.plugins.skie)
 }
 
 kotlin {
-    androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
-    }
+    jvmToolchain(17)
 
-    jvm()
+    androidTarget ()
 
     listOf(
         iosX64(),
@@ -32,14 +27,23 @@ kotlin {
             implementation(libs.koin.compose)
             implementation(libs.coroutines)
             implementation(libs.apollo.runtime)
+            api(libs.kmm.viewmodel)
             // put your Multiplatform dependencies here
         }
-        jvmTest.dependencies {
-            implementation(libs.kotlin.test)
-            implementation(libs.kotlinx.coroutines.test)
-            implementation(libs.turbine)
-            implementation(libs.koin.test)
-            implementation(libs.mockk)
+        androidMain.dependencies {
+            implementation(libs.compose.runtime.saveable.android)
+        }
+        val androidUnitTest by getting {
+            dependencies {
+                implementation(libs.kotlin.test)
+                implementation(libs.kotlinx.coroutines.test)
+                implementation(libs.turbine)
+                implementation(libs.koin.test)
+                implementation(libs.mockk)
+            }
+        }
+        all {
+            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
         }
     }
 }
@@ -49,6 +53,11 @@ android {
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
+    }
+
+    @Suppress("UnstableApiUsage")
+    testOptions {
+        unitTests.isReturnDefaultValues = true
     }
 }
 

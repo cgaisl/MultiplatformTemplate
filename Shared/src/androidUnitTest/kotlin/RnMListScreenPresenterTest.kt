@@ -19,11 +19,11 @@ class RnMListScreenPresenterTest {
 
     @BeforeTest
     fun setup() {
-        val mockRepo = mockk<data.RickAndMortyRepository> {
+        val mockRepo = mockk<RickAndMortyRepository> {
             coEvery { loadCharacters() } just runs
             every { characters } returns MutableStateFlow(
                 listOf(
-                    data.RnMCharacter(
+                    RnMCharacter(
                         "1",
                         "Rick Sanchez",
                         "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
@@ -41,7 +41,7 @@ class RnMListScreenPresenterTest {
     @Test
     fun `characters are loaded and when character clicked, event is emitted`() = runTest {
         moleculeFlow(RecompositionMode.Immediate) {
-            presenters.rnMListScreenPresenter()
+            rnMListScreenPresenter()
         }.test {
             val (state, effects, eventSink) = awaitItem()
             assertEquals(1, state.characters.size)

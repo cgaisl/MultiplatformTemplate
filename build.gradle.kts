@@ -7,4 +7,5 @@ plugins {
     alias(libs.plugins.kotlinAndroid) apply false
     alias(libs.plugins.molecule) apply false
     alias(libs.plugins.apolloPlugin) apply false
+    alias(libs.plugins.skie) apply false
 }

@@ -9,11 +9,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import ui.getRenderingAndroid
+import presenters.RnMDetailScreenState
+import presenters.rnMDetailScreenPresenter
 
 @Composable
 fun RnMDetailScreen(characterId: String) {
-    val (state, _, _) = getRenderingAndroid { presenters.rnMDetailScreenPresenter(characterId) }
+    val state = rnMDetailScreenPresenter(characterId)
 
     RnMDetailScreenContent(
         state = state,
@@ -22,7 +23,7 @@ fun RnMDetailScreen(characterId: String) {
 
 @Composable
 fun RnMDetailScreenContent(
-    state: presenters.RnMDetailScreenState,
+    state: RnMDetailScreenState,
 ) {
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp),
@@ -61,7 +62,7 @@ fun RnMDetailScreenContent(
 @Composable
 fun RnMDetailScreenContentPreview() {
     RnMDetailScreenContent(
-        presenters.RnMDetailScreenState(
+        RnMDetailScreenState(
             character = data.RnMCharacter(
                 "1",
                 "Rick Sanchez",

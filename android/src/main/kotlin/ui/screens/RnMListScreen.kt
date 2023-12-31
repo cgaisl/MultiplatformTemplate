@@ -7,12 +7,11 @@ import androidx.compose.runtime.LaunchedEffect
 import ui.LocalNavController
 import ui.Screen
 import ui.components.RnMListItem
-import ui.getRenderingAndroid
 
 @Composable
 fun RnMListScreen() {
     val navController = LocalNavController.current
-    val (state, effects, eventSink) = getRenderingAndroid { presenters.rnMListScreenPresenter() }
+    val (state, effects, eventSink) = presenters.rnMListScreenPresenter()
 
     LaunchedEffect(Unit) {
         effects.collect {

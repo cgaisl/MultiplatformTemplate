@@ -3,6 +3,10 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
 }
 
+kotlin {
+    jvmToolchain(17)
+}
+
 dependencies {
     implementation(project(":shared"))
     implementation(libs.compose.material3)

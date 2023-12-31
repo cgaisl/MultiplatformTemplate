@@ -14,15 +14,15 @@ class DiceScreenPresenterTest {
     @Test
     fun `when RollDicePressed event is sent, DiceRolled effect is emitted`() = runTest {
         moleculeFlow(RecompositionMode.Immediate) {
-            presenters.diceScreenPresenter()
+            diceScreenPresenter()
         }.test {
             val (state, effects, eventSink) = awaitItem()
             assertEquals(1, state.currentDice)
             effects.onEach {
                 println(it)
             }.test {
-                eventSink(presenters.DiceScreenEvent.RollDicePressed)
-                assertEquals(presenters.DiceScreenEffect.DiceRolled, awaitItem())
+                eventSink(DiceScreenEvent.RollDicePressed)
+                assertEquals(DiceScreenEffect.DiceRolled, awaitItem())
             }
 
             assert(awaitItem().state.currentDice in 1..6)

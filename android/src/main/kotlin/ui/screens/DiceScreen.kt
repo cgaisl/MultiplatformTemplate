@@ -15,12 +15,11 @@ import androidx.compose.ui.unit.dp
 import at.cgaisl.template.multiplatform.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import ui.getRenderingAndroid
 import vibratePhone
 
 @Composable
 fun DiceScreen() {
-    val (state, effects, eventSink) = getRenderingAndroid { presenters.diceScreenPresenter() }
+    val (state, effects, eventSink) = presenters.diceScreenPresenter()
 
     val vibrateFunction = vibratePhone()
 
