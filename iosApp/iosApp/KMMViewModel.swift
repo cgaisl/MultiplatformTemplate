@@ -1,4 +1,7 @@
+import SwiftUI
+import Shared
 import KMMViewModelCore
-import Shared // This should be your shared KMM module
+import KMMViewModelSwiftUI
+
 
 extension Kmm_viewmodel_coreKMMViewModel: KMMViewModel { }

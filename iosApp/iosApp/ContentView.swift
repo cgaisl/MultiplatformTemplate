@@ -1,51 +1,43 @@
 import SwiftUI
-import KMMViewModelSwiftUI
 import Shared
+import KMMViewModelCore
+import KMMViewModelSwiftUI
+
 
 struct ContentView: View {
-    
-    @StateViewModel var viewModel = DiceViewModel()
-    
-    @State private var showContent = false
+    @State private var navigateToDetail = false
+
     var body: some View {
-        Text("Hello World: \(viewModel.getRendering.state!.currentDice)")
-        
-        Button("Press me ") {
-            viewModel.getRendering.eventSink(DiceScreenEventRollDicePressed())
+        NavigationView {
+            VStack {
+                Button("Go to Detail View") {
+                    navigateToDetail = true
+                }
+                .navigationBarTitle("Main View")
+                NavigationLink(destination: PresenterView(), isActive: $navigateToDetail) {
+                    EmptyView()
+                }
+            }
         }
-//            .task {
-//                for await rendering in viewModel.rendering {
-//                    print(rendering.state?.currentDice)
-//                    if rendering.state?.currentDice == 6 {
-//                        break
-//                    }
-//                    rendering.eventSink(DiceScreenEventRollDicePressed())
-//                }
-//            }
-//        VStack {
-//            Button("Click me!") {
-//                withAnimation {
-//                    showContent = !showContent
-//                }
-//            }
-//
-//            if showContent {
-//                VStack(spacing: 16) {
-//                    Image(systemName: "swift")
-//                        .font(.system(size: 200))
-//                        .foregroundColor(.accentColor)
-//                    Text("SwiftUI: ")
-//                }
-//                .transition(.move(edge: .top).combined(with: .opacity))
-//            }
-//        }
-//        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-//        .padding()
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+struct PresenterView: View {
+    @StateViewModel var viewModel = DiceScreenPresenterViewModel()
+
+    var body: some View {
+        VStack {
+            Text("Dice count: \(viewModel.renderingValue.state!.currentDice)")
+
+            Button("Press me ") {
+                viewModel.renderingValue.eventSink(DiceScreenEventRollDicePressed())
+            }
+        }
+    }
+}
+
+struct OtherView: View {
+    var body: some View {
+        Text("Hello World")
     }
 }

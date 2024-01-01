@@ -11,9 +11,11 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
-		C216A1162B40731400E27758 /* MyKMMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216A1152B40731400E27758 /* MyKMMViewModel.swift */; };
-		C240AD772B409BCD00A244C9 /* KMMViewModelCore in Frameworks */ = {isa = PBXBuildFile; productRef = C240AD762B409BCD00A244C9 /* KMMViewModelCore */; };
-		C240AD792B409BCD00A244C9 /* KMMViewModelSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C240AD782B409BCD00A244C9 /* KMMViewModelSwiftUI */; };
+		C2D4E3192B41C3BD008424ED /* commonMain in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E3172B41C3BD008424ED /* commonMain */; };
+		C2D4E31A2B41C3BD008424ED /* iosMain in Resources */ = {isa = PBXBuildFile; fileRef = C2D4E3182B41C3BD008424ED /* iosMain */; };
+		C2D4E31D2B420E0C008424ED /* KMMViewModelCore in Frameworks */ = {isa = PBXBuildFile; productRef = C2D4E31C2B420E0C008424ED /* KMMViewModelCore */; };
+		C2D4E31F2B420E0C008424ED /* KMMViewModelSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C2D4E31E2B420E0C008424ED /* KMMViewModelSwiftUI */; };
+		C2D4E3212B420E1C008424ED /* KMMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D4E3202B420E1C008424ED /* KMMViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,7 +26,9 @@
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB3632DC29227652001CCB65 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
-		C216A1152B40731400E27758 /* MyKMMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKMMViewModel.swift; sourceTree = "<group>"; };
+		C2D4E3172B41C3BD008424ED /* commonMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commonMain; path = ../../shared/src/commonMain; sourceTree = "<group>"; };
+		C2D4E3182B41C3BD008424ED /* iosMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iosMain; path = ../../shared/src/iosMain; sourceTree = "<group>"; };
+		C2D4E3202B420E1C008424ED /* KMMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMMViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,8 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C240AD772B409BCD00A244C9 /* KMMViewModelCore in Frameworks */,
-				C240AD792B409BCD00A244C9 /* KMMViewModelSwiftUI in Frameworks */,
+				C2D4E31D2B420E0C008424ED /* KMMViewModelCore in Frameworks */,
+				C2D4E31F2B420E0C008424ED /* KMMViewModelSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +62,7 @@
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
+				C2D4E3162B41C371008424ED /* KotlinDebug */,
 				AB1DB47929225F7C00F7AF9C /* Configuration */,
 				7555FF7D242A565900829871 /* iosApp */,
 				7555FF7C242A565900829871 /* Products */,
@@ -80,8 +85,8 @@
 				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
-				C216A1152B40731400E27758 /* MyKMMViewModel.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
+				C2D4E3202B420E1C008424ED /* KMMViewModel.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -92,6 +97,15 @@
 				AB3632DC29227652001CCB65 /* Config.xcconfig */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		C2D4E3162B41C371008424ED /* KotlinDebug */ = {
+			isa = PBXGroup;
+			children = (
+				C2D4E3172B41C3BD008424ED /* commonMain */,
+				C2D4E3182B41C3BD008424ED /* iosMain */,
+			);
+			path = KotlinDebug;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,13 +123,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				C240AD692B4099D700A244C9 /* PBXTargetDependency */,
-				C240AD6B2B4099D700A244C9 /* PBXTargetDependency */,
 			);
 			name = iosApp;
 			packageProductDependencies = (
-				C240AD762B409BCD00A244C9 /* KMMViewModelCore */,
-				C240AD782B409BCD00A244C9 /* KMMViewModelSwiftUI */,
+				C2D4E31C2B420E0C008424ED /* KMMViewModelCore */,
+				C2D4E31E2B420E0C008424ED /* KMMViewModelSwiftUI */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* MultiplatformTemplate.app */;
@@ -146,7 +158,7 @@
 			);
 			mainGroup = 7555FF72242A565900829871;
 			packageReferences = (
-				C240AD752B409BCD00A244C9 /* XCRemoteSwiftPackageReference "KMM-ViewModel" */,
+				C2D4E31B2B420E0C008424ED /* XCRemoteSwiftPackageReference "KMM-ViewModel" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -164,6 +176,8 @@
 			files = (
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
+				C2D4E3192B41C3BD008424ED /* commonMain in Resources */,
+				C2D4E31A2B41C3BD008424ED /* iosMain in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,24 +209,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C216A1162B40731400E27758 /* MyKMMViewModel.swift in Sources */,
+				C2D4E3212B420E1C008424ED /* KMMViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C240AD692B4099D700A244C9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = C240AD682B4099D700A244C9 /* KMMViewModelCore */;
-		};
-		C240AD6B2B4099D700A244C9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = C240AD6A2B4099D700A244C9 /* KMMViewModelSwiftUI */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7555FFA3242A565B00829871 /* Debug */ = {
@@ -421,15 +424,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C240AD752B409BCD00A244C9 /* XCRemoteSwiftPackageReference "KMM-ViewModel" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rickclephas/KMM-ViewModel.git";
-			requirement = {
-				kind = exactVersion;
-				version = "1.0.0-ALPHA-16";
-			};
-		};
-		C26258532B4075DE007AAE3E /* XCRemoteSwiftPackageReference "KMM-ViewModel" */ = {
+		C2D4E31B2B420E0C008424ED /* XCRemoteSwiftPackageReference "KMM-ViewModel" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rickclephas/KMM-ViewModel.git";
 			requirement = {
@@ -440,24 +435,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C240AD682B4099D700A244C9 /* KMMViewModelCore */ = {
+		C2D4E31C2B420E0C008424ED /* KMMViewModelCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C26258532B4075DE007AAE3E /* XCRemoteSwiftPackageReference "KMM-ViewModel" */;
+			package = C2D4E31B2B420E0C008424ED /* XCRemoteSwiftPackageReference "KMM-ViewModel" */;
 			productName = KMMViewModelCore;
 		};
-		C240AD6A2B4099D700A244C9 /* KMMViewModelSwiftUI */ = {
+		C2D4E31E2B420E0C008424ED /* KMMViewModelSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C26258532B4075DE007AAE3E /* XCRemoteSwiftPackageReference "KMM-ViewModel" */;
-			productName = KMMViewModelSwiftUI;
-		};
-		C240AD762B409BCD00A244C9 /* KMMViewModelCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C240AD752B409BCD00A244C9 /* XCRemoteSwiftPackageReference "KMM-ViewModel" */;
-			productName = KMMViewModelCore;
-		};
-		C240AD782B409BCD00A244C9 /* KMMViewModelSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C240AD752B409BCD00A244C9 /* XCRemoteSwiftPackageReference "KMM-ViewModel" */;
+			package = C2D4E31B2B420E0C008424ED /* XCRemoteSwiftPackageReference "KMM-ViewModel" */;
 			productName = KMMViewModelSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */

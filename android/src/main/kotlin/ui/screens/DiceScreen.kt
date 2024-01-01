@@ -15,7 +15,11 @@ import androidx.compose.ui.unit.dp
 import at.cgaisl.template.multiplatform.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import presenters.DiceScreenEffect
+import presenters.DiceScreenEvent
+import presenters.DiceScreenState
 import vibratePhone
+
 
 @Composable
 fun DiceScreen() {
@@ -26,7 +30,7 @@ fun DiceScreen() {
     LaunchedEffect(Unit) {
         effects.collect { effect ->
             when (effect) {
-                is presenters.DiceScreenEffect.DiceRolled -> {
+                is DiceScreenEffect.DiceRolled -> {
                     vibrateFunction()
                 }
             }
@@ -41,8 +45,8 @@ fun DiceScreen() {
 
 @Composable
 fun DiceScreeContent(
-    state: presenters.DiceScreenState,
-    eventSink: (presenters.DiceScreenEvent) -> Unit
+    state: DiceScreenState,
+    eventSink: (DiceScreenEvent) -> Unit
 ) {
     val coroutineScope = rememberCoroutineScope()
     var targetRotation by remember { mutableFloatStateOf(0f) }
