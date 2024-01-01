@@ -18,6 +18,3 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-val koinModule = module {
-    single { data.RickAndMortyRepository() }
-}

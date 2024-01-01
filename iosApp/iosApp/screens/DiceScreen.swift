@@ -2,6 +2,7 @@ import SwiftUI
 import Shared
 import KMMViewModelCore
 import KMMViewModelSwiftUI
+import AudioToolbox
 
 
 
@@ -18,6 +19,7 @@ struct DiceScreen: View {
                 switch onEnum(of: effect) {
                 case .diceRolled:
                     print("Dice Rolled")
+                    AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                 case .none:
                     fatalError("Unknown status")
                 }

@@ -1,9 +1,12 @@
 import SwiftUI
+import Shared
 
 @main
 struct iOSApp: App {
     
-    @State var show: Bool = false
+    init() {
+        doInitKoin()
+    }
     
 	var body: some Scene {
 		WindowGroup {

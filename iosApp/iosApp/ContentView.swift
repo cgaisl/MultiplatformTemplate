@@ -12,7 +12,7 @@ struct ContentView: View {
                         Image("five_icon").renderingMode(.template)
                     }
                 }
-            Text("Rick and Morty")
+            RnMListScreen()
                 .tabItem {
                     VStack {
                         Text("Rick and Morty")
