@@ -16,6 +16,7 @@
 		C2D4E31D2B420E0C008424ED /* KMMViewModelCore in Frameworks */ = {isa = PBXBuildFile; productRef = C2D4E31C2B420E0C008424ED /* KMMViewModelCore */; };
 		C2D4E31F2B420E0C008424ED /* KMMViewModelSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C2D4E31E2B420E0C008424ED /* KMMViewModelSwiftUI */; };
 		C2D4E3212B420E1C008424ED /* KMMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D4E3202B420E1C008424ED /* KMMViewModel.swift */; };
+		C2D4E3242B433E09008424ED /* DiceScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D4E3232B433E09008424ED /* DiceScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		C2D4E3172B41C3BD008424ED /* commonMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = commonMain; path = ../../shared/src/commonMain; sourceTree = "<group>"; };
 		C2D4E3182B41C3BD008424ED /* iosMain */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iosMain; path = ../../shared/src/iosMain; sourceTree = "<group>"; };
 		C2D4E3202B420E1C008424ED /* KMMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMMViewModel.swift; sourceTree = "<group>"; };
+		C2D4E3232B433E09008424ED /* DiceScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				C2D4E3222B433DFC008424ED /* screens */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
@@ -106,6 +109,14 @@
 				C2D4E3182B41C3BD008424ED /* iosMain */,
 			);
 			path = KotlinDebug;
+			sourceTree = "<group>";
+		};
+		C2D4E3222B433DFC008424ED /* screens */ = {
+			isa = PBXGroup;
+			children = (
+				C2D4E3232B433E09008424ED /* DiceScreen.swift */,
+			);
+			path = screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2D4E3242B433E09008424ED /* DiceScreen.swift in Sources */,
 				C2D4E3212B420E1C008424ED /* KMMViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,

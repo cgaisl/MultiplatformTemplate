@@ -7,17 +7,7 @@ struct iOSApp: App {
     
 	var body: some Scene {
 		WindowGroup {
-            VStack {
-                Button("switch") {
-                    show = !show
-                }
-                
-                if (show) {
-                    ContentView()
-                } else {
-                    Text("Hello")
-                }
-            }
+            ContentView()
 		}
 	}
 }
