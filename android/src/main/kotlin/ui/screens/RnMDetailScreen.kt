@@ -14,7 +14,7 @@ import presenters.rnMDetailScreenPresenter
 
 @Composable
 fun RnMDetailScreen(characterId: String) {
-    val state = rnMDetailScreenPresenter(characterId)
+    val (state, _, _) = rnMDetailScreenPresenter(characterId)
 
     RnMDetailScreenContent(
         state = state,

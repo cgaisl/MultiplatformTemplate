@@ -19,7 +19,7 @@ struct RnMListScreenContent: View {
     var body: some View {
         NavigationView {
             List(state.characters, id: \.id) { character in
-                NavigationLink(destination: Text(character.id)) {
+                NavigationLink(destination: RnMDetailScreen(characterId: character.id)) {
                     HStack {
                         if let imageUrl = URL(string: character.image) {
                             AsyncImage(url: imageUrl) { image in
