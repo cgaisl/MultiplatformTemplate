@@ -49,5 +49,6 @@ struct RnMDetailScreenContent: View {
             }
             .padding()
             .navigationTitle(state.character.name)
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
