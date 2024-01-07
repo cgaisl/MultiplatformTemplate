@@ -14,8 +14,6 @@ struct RnMListScreen: View {
                 .navigationDestination(for: String.self) { detailId in
                     RnMDetailScreen(characterId: detailId)
                 }
-
-
         }
         .task {
             for await effect in viewModel.effects {
