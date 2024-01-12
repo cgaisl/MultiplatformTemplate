@@ -1,0 +1,16 @@
+CREATE TABLE RnMCharacter (
+    id TEXT PRIMARY KEY,
+    name TEXT NOT NULL,
+    image TEXT NOT NULL,
+    origin TEXT NOT NULL,
+    species TEXT NOT NULL,
+    gender TEXT NOT NULL,
+    status TEXT NOT NULL
+);
+
+insertRnMCharacter:
+INSERT OR REPLACE INTO RnMCharacter (id, name, image, origin, species, gender, status)
+VALUES (?, ?, ?, ?, ?, ?, ?);
+
+selectAllCharacters:
+SELECT * FROM RnMCharacter;

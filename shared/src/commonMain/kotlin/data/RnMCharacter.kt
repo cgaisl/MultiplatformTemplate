@@ -1,5 +1,7 @@
 package data
 
+import at.cgaisl.multiplatformtemplate.db.RnMCharacter as DatabaseRnMCharacter
+
 // Rick and Morty Character
 data class RnMCharacter(
     val id: String,
@@ -9,4 +11,14 @@ data class RnMCharacter(
     val species: String,
     val gender: String,
     val status: String,
+)
+
+fun DatabaseRnMCharacter.toCharacter(): RnMCharacter = RnMCharacter(
+    id = id,
+    name = name,
+    image = image,
+    origin = origin,
+    species = species,
+    gender = gender,
+    status = status,
 )

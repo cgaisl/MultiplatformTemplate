@@ -1,12 +1,12 @@
 package at.cgaisl.template.multiplatform
 
+import KoinHelper
 import android.app.Application
-import initKoin
 
 class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        initKoin()
+        KoinHelper(this).initKoin()
     }
 }

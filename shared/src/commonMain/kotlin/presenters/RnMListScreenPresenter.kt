@@ -29,7 +29,7 @@ fun rnMListScreenPresenter(): Rendering<RnMListScreenState, RnmListScreenEffect,
     val repository = koinInject<RickAndMortyRepository>()
 
     LaunchedEffect(Unit) {
-        repository.loadCharacters()
+        repository.reloadCharactersFromNetwork()
     }
 
     return Rendering(

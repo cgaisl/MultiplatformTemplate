@@ -20,7 +20,7 @@ class RnMListScreenPresenterTest {
     @BeforeTest
     fun setup() {
         val mockRepo = mockk<RickAndMortyRepository> {
-            coEvery { loadCharacters() } just runs
+            coEvery { reloadCharactersFromNetwork() } just runs
             every { characters } returns MutableStateFlow(
                 listOf(
                     RnMCharacter(

@@ -1,15 +1,15 @@
 import data.RickAndMortyRepository
-import org.koin.core.context.startKoin
+import org.koin.core.module.Module
 import org.koin.dsl.module
 
-
-fun initKoin() {
-    startKoin {
-        modules(koinModule)
-    }
+expect class KoinHelper {
+    fun initKoin()
 }
 
+fun appModule() = listOf(commonModule, platformModule())
 
-val koinModule = module {
+expect fun platformModule(): Module
+
+private val commonModule = module {
     single { RickAndMortyRepository() }
 }

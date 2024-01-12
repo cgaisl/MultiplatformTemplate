@@ -23,6 +23,7 @@ mockk = "1.13.8"
 coroutines-core = "1.8.0-RC2"
 skie = "0.6.1"
 kmm-viewmodel = "1.0.0-ALPHA-16"
+sqlDelight = "2.0.1"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
@@ -32,9 +33,9 @@ compose-ui-tooling-preview-android = { module = "androidx.compose.ui:ui-tooling-
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigation" }
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin-compose-multiplatform" }
-koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 apollo-runtime = { module = "com.apollographql.apollo3:apollo-runtime", version.ref = "apollo" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
@@ -44,6 +45,9 @@ mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines-core" }
 kmm-viewmodel = { module = "com.rickclephas.kmm:kmm-viewmodel-core", version.ref = "kmm-viewmodel" }
 compose-runtime-saveable-android = { module = "androidx.compose.runtime:runtime-saveable", version.ref = "compose-ui-tooling" }
+sql-delight-driver-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDelight" }
+sql-delight-driver-ios = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDelight" }
+sql-delight-coroutines-extensions = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqlDelight" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -53,4 +57,4 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 molecule = { id = "app.cash.molecule", version.ref = "molecule" }
 apolloPlugin = { id = "com.apollographql.apollo3", version.ref = "apollo" }
 skie = { id = "co.touchlab.skie", version.ref = "skie" }
-
+sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }

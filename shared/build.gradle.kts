@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.molecule)
     alias(libs.plugins.apolloPlugin)
     alias(libs.plugins.skie)
+    alias(libs.plugins.sqlDelight)
 }
 
 kotlin {
@@ -27,11 +28,17 @@ kotlin {
             implementation(libs.koin.compose)
             implementation(libs.coroutines)
             implementation(libs.apollo.runtime)
-            api(libs.kmm.viewmodel)
-            // put your Multiplatform dependencies here
+            implementation(libs.sql.delight.coroutines.extensions)
+            implementation(libs.koin.core)
         }
         androidMain.dependencies {
             implementation(libs.compose.runtime.saveable.android)
+            implementation(libs.sql.delight.driver.android)
+            implementation(libs.koin.android)
+        }
+        nativeMain.dependencies {
+            api(libs.kmm.viewmodel)
+            implementation(libs.sql.delight.driver.ios)
         }
         val androidUnitTest by getting {
             dependencies {
@@ -64,5 +71,13 @@ android {
 apollo {
     service("RickAndMorty") {
         packageName.set(libs.versions.android.packageName.get())
+    }
+}
+
+sqldelight {
+    databases {
+        create("Database") {
+            packageName.set("at.cgaisl.multiplatformtemplate.db")
+        }
     }
 }
