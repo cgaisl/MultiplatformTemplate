@@ -12,7 +12,7 @@ struct RnMDetailScreen: View {
     }
     
     var body: some View {
-        RnMDetailScreenContent(state: viewModel.state!)
+        RnMDetailScreenContent(state: viewModel.state.value!)
     }
 }
 

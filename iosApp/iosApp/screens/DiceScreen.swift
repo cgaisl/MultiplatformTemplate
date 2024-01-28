@@ -7,11 +7,11 @@ import AudioToolbox
 
 
 struct DiceScreen: View {
-    @StateViewModel var viewModel = DiceScreenPresenterViewModel()
+    @StateViewModel var viewModel = DiceScreenViewModel()
     
     var body: some View {
         DiceScreenContent(
-            state: viewModel.state!,
+            state: viewModel.state.value!,
             eventSink: viewModel.eventSink
         )
         .task {

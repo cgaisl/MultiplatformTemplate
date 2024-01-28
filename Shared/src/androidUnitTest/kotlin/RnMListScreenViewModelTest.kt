@@ -1,21 +1,28 @@
-import app.cash.molecule.RecompositionMode
-import app.cash.molecule.moleculeFlow
 import app.cash.turbine.test
 import data.RickAndMortyRepository
 import data.RnMCharacter
-import io.mockk.*
+import io.mockk.coEvery
+import io.mockk.every
+import io.mockk.just
+import io.mockk.mockk
+import io.mockk.runs
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.test.runTest
+import org.junit.Rule
 import org.junit.Test
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
-import presenters.RnMListScreenEvent.CharacterClicked
-import presenters.RnmListScreenEffect.NavigateToDetail
-import presenters.rnMListScreenPresenter
+import utils.MainDispatcherRule
+import viewModels.RnMListScreenEvent.CharacterClicked
+import viewModels.RnMListScreenViewModel
+import viewModels.RnmListScreenEffect.NavigateToDetail
 import kotlin.test.BeforeTest
 import kotlin.test.assertEquals
 
-class RnMListScreenPresenterTest {
+class RnMListScreenViewModelTest {
+
+    @get:Rule
+    val mainDispatcherRule = MainDispatcherRule()
 
     @BeforeTest
     fun setup() {
@@ -40,14 +47,15 @@ class RnMListScreenPresenterTest {
 
     @Test
     fun `characters are loaded and when character clicked, event is emitted`() = runTest {
-        moleculeFlow(RecompositionMode.Immediate) {
-            rnMListScreenPresenter()
-        }.test {
-            val (state, effects, eventSink) = awaitItem()
+
+        val viewModel = RnMListScreenViewModel()
+
+        viewModel.state.test {
+            val state = awaitItem()
             assertEquals(1, state.characters.size)
 
-            effects.test {
-                eventSink(CharacterClicked(state.characters.first()))
+            viewModel.effects.test {
+                viewModel.eventSink(CharacterClicked(state.characters.first()))
                 assertEquals(
                     state.characters.first().id,
                     (awaitItem() as NavigateToDetail).characterId

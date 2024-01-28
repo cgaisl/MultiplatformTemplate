@@ -10,7 +10,7 @@ plugins {
 kotlin {
     jvmToolchain(17)
 
-    androidTarget ()
+    androidTarget()
 
     listOf(
         iosX64(),
@@ -30,6 +30,7 @@ kotlin {
             implementation(libs.apollo.runtime)
             implementation(libs.sql.delight.coroutines.extensions)
             implementation(libs.koin.core)
+            api(libs.kmm.viewmodel)
         }
         androidMain.dependencies {
             implementation(libs.compose.runtime.saveable.android)
@@ -37,7 +38,6 @@ kotlin {
             implementation(libs.koin.android)
         }
         nativeMain.dependencies {
-            api(libs.kmm.viewmodel)
             implementation(libs.sql.delight.driver.ios)
         }
         val androidUnitTest by getting {

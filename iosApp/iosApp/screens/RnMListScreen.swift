@@ -10,7 +10,7 @@ struct RnMListScreen: View {
 
     var body: some View {
         NavigationStack(path: $detailIds) {
-            RnMListScreenContent(state: viewModel.state!, event: viewModel.eventSink)
+            RnMListScreenContent(state: viewModel.state.value!, event: viewModel.eventSink)
                 .navigationDestination(for: String.self) { detailId in
                     RnMDetailScreen(characterId: detailId)
                 }
