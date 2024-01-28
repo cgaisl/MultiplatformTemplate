@@ -8,7 +8,7 @@ actual fun platformModule(): Module = module {
     single { Database(DriverFactory().createDriver()).rnMDatabaseQueries }
 }
 
-actual class KoinHelper() {
+actual class KoinHelper {
     actual fun initKoin() {
         startKoin {
             modules(appModule())
